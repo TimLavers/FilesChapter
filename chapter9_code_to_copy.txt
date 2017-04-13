@@ -1,0 +1,98 @@
+P76
+package pfb.files
+
+import java.nio.file.Files
+import java.nio.file.Paths
+
+fun main(args: Array<String>) {
+    val helloWorld = Paths.get("files/BirdListWithGaps.txt")
+    val sightings = Files.readAllLines(helloWorld)
+
+    val noGaps = mutableListOf<String>()
+    for (sighting in sightings) {
+        if (sighting != "") {
+            noGaps.add(sighting)
+        }
+    }
+    val reformatted = Paths.get("files/Reformatted.txt")
+    Files.write(reformatted, noGaps)
+}
+
+
+
+-------------------------------------
+
+package pfb.files
+
+import java.nio.file.Files
+import java.nio.file.Paths
+
+fun main(args: Array<String>) {
+    val helloWorld = Paths.get("files/HelloWorldTwice.txt")
+    val strings = Files.readAllLines(helloWorld)
+    println("strings = $strings")
+}
+
+
+P77
+package pfb.files
+
+import java.nio.file.Files
+import java.nio.file.Paths
+
+fun main(args: Array<String>) {
+    val file = Paths.get("files/BirdList.txt")
+    val sightings = Files.readAllLines(file)
+
+    val birdTypes = mutableSetOf<String>()
+    for (bird in sightings) {
+        birdTypes.add(bird)
+    }
+
+    val numberOfTypes = birdTypes.size
+    println("Number of species = $numberOfTypes")
+}
+
+
+
+package pfb.files
+
+import java.nio.file.Files
+import java.nio.file.Paths
+
+fun main(args: Array<String>) {
+    val file = Paths.get("files/BirdListWithGaps.txt")
+    val sightings = Files.readAllLines(file)
+
+    val birdTypes = mutableSetOf<String>()
+    for (bird in sightings) {
+        if (bird != "") {
+            birdTypes.add(bird)
+        }
+    }
+
+    val numberOfTypes = birdTypes.size
+    println("Number of species = $numberOfTypes")
+}
+
+
+
+P78
+package pfb.files
+
+import java.nio.file.Files
+import java.nio.file.Paths
+
+fun main(args: Array<String>) {
+    val original = Paths.get("files/BirdListWithGapsAndCaps.txt")
+    val sightings = Files.readAllLines(original)
+
+    val noGaps = mutableListOf<String>()
+    for (sighting in sightings) {
+        if (sighting != "") {
+            noGaps.add(sighting.toLowerCase())
+        }
+    }
+    val reformatted = Paths.get("files/Reformatted.txt");
+    Files.write(reformatted, noGaps)
+}
